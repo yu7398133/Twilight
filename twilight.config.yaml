@@ -36,7 +36,7 @@ site:
         # 示例字体配置 - Zen Maru Gothic
         "Example - ZenMaruGothic":
             # 字体源 (字体 CSS 链接 | 字体文件路径)
-            src: "https://fonts.googleapis.com/css2?family=Noto+Serif+SC&display=swap"
+            src: "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&display=swap"
             # 字体名 (font-family)
             family: "Noto Serif SC"
     # 主题色配置
