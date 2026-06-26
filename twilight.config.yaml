@@ -442,7 +442,7 @@ pio:
     enable: true
     # 模型文件路径
     models:
-        - "https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json"
+        - "https://cdn.jsdelivr.net/gh/Eikanya/Live2d-model/%E9%AD%82%E5%99%A8%E5%AD%A6%E9%99%A2%20(%E7%82%BC%E9%93%9C%E5%AD%A6%E9%99%A2)/live2d/11190/.model.json"
     # 看板娘位置
     position: "left"
     # 看板娘宽度
