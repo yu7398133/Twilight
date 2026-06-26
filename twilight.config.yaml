@@ -54,12 +54,12 @@ site:
             # 桌面壁纸图片 (相对于 /public 目录; 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
             desktop:
                 - "https://www.loliapi.com/acg/pc/"
-                - "https://www.loliapi.com/acg/pc/"
-                - "https://www.loliapi.com/acg/pc/"
+                - "https://esa-img.544521.xyz/i/pc/img368.webp"
+                - "https://esa-img.20240828.xyz/i/pc/img54.webp"
             # 移动壁纸图片 (相对于 /public 目录; 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
             mobile:
                 - "https://www.loliapi.com/acg/pe/"
-                - "https://www.loliapi.com/acg/pe/"
+                - "https://esa-img.20240828.xyz/i/pe/img535.webp"
         # 壁纸位置 ('top' | 'center' | 'bottom')
         position: "center"
         # 轮播配置 (fullscreen 和 banner 模式共享)
