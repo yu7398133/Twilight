@@ -7,7 +7,7 @@ site:
     # 站点副标题
     subtitle: "JingSama の 宝藏之地"
     # 语言配置
-    lang: "zh_Hans"
+    lang: "en"
     # 翻译配置
     translate:
         # 启用翻译功能
