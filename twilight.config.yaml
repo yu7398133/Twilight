@@ -77,7 +77,7 @@ site:
                 # 在主页显示文本
                 enable: true
                 # 主标题
-                title: ""JingSama の 宝藏之地""
+                title: "JingSama の 宝藏之地"
                 # 副标题，支持单个字符串或字符串数组
                 subtitle:
                     - "Illuminate Our Paths"
