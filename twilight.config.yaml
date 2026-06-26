@@ -442,7 +442,7 @@ pio:
     enable: true
     # 模型文件路径
     models:
-        - "/pio/models/pio/model.json"
+        - "https://fastly.jsdelivr.net/gh/Eikanya/Live2d-model/%E5%B4%A9%E5%9D%8F%E5%AD%A6%E5%9B%AD2/yiselin/model.json"
     # 看板娘位置
     position: "left"
     # 看板娘宽度
