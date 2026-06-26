@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Live2D 模型预览</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #1a1a2e;
+            color: #eee;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 { margin-bottom: 10px; font-size: 1.5em; }
+        .controls {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .controls label { font-size: 0.9em; }
+        .controls input[type="text"] {
+            padding: 6px 10px;
+            width: 500px;
+            max-width: 80vw;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #16213e;
+            color: #eee;
+        }
+        .controls input[type="number"] {
+            padding: 6px 10px;
+            width: 80px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #16213e;
+            color: #eee;
+        }
+        .controls button {
+            padding: 6px 16px;
+            border-radius: 6px;
+            border: none;
+            background: #0f3460;
+            color: #eee;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .controls button:hover { background: #1a508b; }
+        #canvas-container {
+            margin-top: 20px;
+            border: 2px dashed #333;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #16213e;
+            position: relative;
+        }
+        canvas { display: block; }
+        .info {
+            margin-top: 15px;
+            font-size: 0.85em;
+            color: #888;
+            text-align: center;
+            max-width: 600px;
+        }
+        .info code {
+            background: #0f3460;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        .drop-zone {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #666;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎭 Live2D 模型预览</h1>
+    <div class="controls">
+        <input type="text" id="modelUrl" placeholder="粘贴 model.json 的 URL 或本地相对路径" value="">
+        <button onclick="loadModel()">加载</button>
+        <button onclick="loadLocal()">选择本地文件</button>
+    </div>
+    <div class="controls">
+        <label>宽度: <input type="number" id="cWidth" value="600" min="100" max="2000" step="50"></label>
+        <label>高度: <input type="number" id="cHeight" value="600" min="100" max="2000" step="50"></label>
+        <button onclick="resizeCanvas()">调整画布</button>
+    </div>
+    <div id="canvas-container" style="width:600px;height:600px;">
+        <div class="drop-zone" id="dropZone">拖拽 model.json 到这里</div>
+        <canvas id="live2d" width="600" height="600"></canvas>
+    </div>
+    <div class="info">
+        <p>使用方法：</p>
+        <p>1. 输入 model.json 的 URL（支持 CDN 链接或本地路径），点击「加载」</p>
+        <p>2. 或者点击「选择本地文件」选择本地的 model.json</p>
+        <p>3. 也可以直接拖拽 model.json 文件到画布区域</p>
+        <p style="margin-top:8px;">常用模型链接：</p>
+        <p>初音: <code>https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json</code></p>
+        <p>小春: <code>https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json</code></p>
+    </div>
+
+    <script src="/pio/static/l2d.js"></script>
+    <script>
+        const canvas = document.getElementById('live2d');
+        const container = document.getElementById('canvas-container');
+        const dropZone = document.getElementById('dropZone');
+        let model = null;
+
+        function loadModel() {
+            const url = document.getElementById('modelUrl').value.trim();
+            if (!url) return alert('请输入 model.json 的 URL');
+            loadModelFromUrl(url);
+        }
+
+        function loadModelFromUrl(url) {
+            dropZone.style.display = 'none';
+            if (model) {
+                try { model.destroy(); } catch(e) {}
+            }
+            try {
+                model = new L2D({
+                    canvas: canvas,
+                    baseUrl: url.replace(/\/[^\/]*$/, '/'),
+                    modelJson: url,
+                    scale: 1,
+                    x: 0.5,
+                    y: 0.5
+                });
+            } catch(e) {
+                console.error(e);
+                alert('加载失败: ' + e.message);
+            }
+        }
+
+        function loadLocal() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    try {
+                        const json = JSON.parse(ev.target.result);
+                        // 创建一个虚拟 URL 来加载
+                        const blob = new Blob([ev.target.result], {type: 'application/json'});
+                        const url = URL.createObjectURL(blob);
+                        // 无法用 blob URL 做 baseUrl，需要用户把文件放在本地服务器
+                        alert('本地文件需要放在 HTTP 服务器中才能加载资源。\n\n请用以下方式启动本地服务器：\n\n1. 把模型文件夹放到某个目录\n2. 在该目录运行: python3 -m http.server 8080\n3. 然后访问 http://localhost:8080/preview.html');
+                    } catch(err) {
+                        alert('JSON 解析失败: ' + err.message);
+                    }
+                };
+                reader.readAsText(file);
+            };
+            input.click();
+        }
+
+        function resizeCanvas() {
+            const w = parseInt(document.getElementById('cWidth').value) || 600;
+            const h = parseInt(document.getElementById('cHeight').value) || 600;
+            canvas.width = w;
+            canvas.height = h;
+            container.style.width = w + 'px';
+            container.style.height = h + 'px';
+            if (model) {
+                try { model.resize(); } catch(e) {}
+            }
+        }
+
+        // 拖拽支持
+        container.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            container.style.borderColor = '#0f3460';
+        });
+        container.addEventListener('dragleave', () => {
+            container.style.borderColor = '#333';
+        });
+        container.addEventListener('drop', (e) => {
+            e.preventDefault();
+            container.style.borderColor = '#333';
+            const file = e.dataTransfer.files[0];
+            if (!file) return;
+            if (file.name.endsWith('.json')) {
+                alert('拖拽的 JSON 文件需要和模型资源放在同一目录，并通过本地服务器访问。\n\n请先启动本地服务器，然后用 URL 加载。');
+            }
+        });
+
+        // URL 参数支持 ?url=xxx
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('url')) {
+            document.getElementById('modelUrl').value = params.get('url');
+            loadModelFromUrl(params.get('url'));
+        }
+    </script>
+</body>
+</html>
