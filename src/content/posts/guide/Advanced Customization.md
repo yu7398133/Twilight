@@ -1,144 +1,144 @@
 ---
-title: Guide for Template - Advanced Customization
+title: 模板指南 - 高级自定义
 published: 2024-02-10
-description: "Master the advanced features and customization options of the Twilight template."
+description: "掌握 Twilight 模板的高级功能和自定义选项。"
 cover: "./Cover - Advanced Customization.jpg"
 coverInContent: false
 pinned: false
 tags: []
 category:
-    - Guides:
-        - Advanced Customization
+    - 指南:
+        - 高级自定义
 draft: false
 ---
 
 
-This guide covers advanced customization options and features available in the Twilight template, from global configurations to specialized Markdown extensions.
+本指南涵盖了 Twilight 模板中可用的高级自定义选项和功能，包括全局配置和 Markdown 扩展。
 
 
-## Global Configuration
+## 全局配置
 
-The `twilight.config.yaml` file is the heart of your blog's configuration. Here are some advanced settings you can tweak:
+`twilight.config.yaml` 文件是博客配置的核心。以下是一些你可以调整的高级设置：
 
-### Site & Localization
+### 站点与本地化
 
-- **Language & Translation**: Enable client-side translation using `site.translate.enable`. You can choose different services and configure auto-detection.
+- **语言与翻译**：通过 `site.translate.enable` 启用客户端翻译。你可以选择不同的翻译服务并配置自动检测。
 
-- **Custom Fonts**: Add your own fonts by providing a CSS link or file path under `site.font`.
+- **自定义字体**：在 `site.font` 下提供 CSS 链接或文件路径来添加自定义字体。
 
-### Visual Effects
+### 视觉效果
 
-- **Theme Color**: Change the primary color of your blog by adjusting the `site.themeColor.hue` (0-360).
+- **主题色**：通过调整 `site.themeColor.hue`（0-360）来更改博客的主色调。
 
-- **Wallpaper Modes**: Choose between `banner`, `fullscreen`, or `none`. You can also enable a `carousel` for multiple wallpapers with the `kenBurns` effect.
+- **壁纸模式**：可选择 `banner`、`fullscreen` 或 `none`。你还可以通过 `carousel` 启用多壁纸轮播，并搭配 `kenBurns` 效果。
 
-- **Waves Effect**: Toggle the animated water ripple effect on the banner using `site.wallpaper.banner.waves.enable`.
+- **波浪效果**：通过 `site.wallpaper.banner.waves.enable` 切换横幅上的动态水波纹效果。
 
-- **Particle Effects**: Enable floating particles in the background with `particle.enable`.
+- **粒子效果**：通过 `particle.enable` 启用背景中的浮动粒子。
 
-### UI 
+### 用户界面
 
-- **Navbar Transparency**: Adjust `site.wallpaper.banner.navbar.transparentMode` between `semi`, `full`, or `semifull`.
+- **导航栏透明度**：通过 `site.wallpaper.banner.navbar.transparentMode` 调整，可选 `semi`、`full` 或 `semifull`。
 
-- **Sidebar Widgets**: Reorder or toggle sidebar components like `profile`, `announcement`, `categories`, `tags`, `toc`, and `statistics` in `sidebar.components`.
+- **侧边栏组件**：在 `sidebar.components` 中重新排列或切换侧边栏组件，如 `profile`（个人简介）、`announcement`（公告）、`categories`（分类）、`tags`（标签）、`toc`（目录）和 `statistics`（统计）。
 
 
-## Markdown Extensions
+## Markdown 扩展
 
-### GitHub Repository Cards
+### GitHub 仓库卡片
 
-You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API. 
+你可以添加链接到 GitHub 仓库的动态卡片，页面加载时会从 GitHub API 拉取仓库信息。
 
 ::github{repo="Spr-Aachen/Twilight"}
 
-Create a GitHub repository card with the code `::github{repo="Spr-Aachen/Twilight"}`.
+使用代码 `::github{repo="Spr-Aachen/Twilight"}` 创建 GitHub 仓库卡片。
 
 ```markdown
 ::github{repo="Spr-Aachen/Twilight"}
 ```
 
-### Music Cards
+### 音乐卡片
 
-- Online
+- 在线音乐
 ::music{meting="https://meting.spr-aachen.com/api?server=netease&type=song&id=1390882521"}
 
 ```markdown
 ::music{meting="https://meting.spr-aachen.com/api?server=netease&type=song&id=1390882521"}
 ```
 
-- Local
+- 本地音乐
 ::music{title="深海之息" artist="Youzee Music" cover="https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg" audio="assets/music/深海之息.m4a" lrc="assets/music/深海之息.lrc"}
 
 ```markdown
 ::music{title="深海之息" artist="Youzee Music" cover="https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg" audio="assets/music/深海之息.m4a" lrc="assets/music/深海之息.lrc"}
 ```
 
-### Admonitions
+### 提示框
 
-Following types of admonitions are supported: `note` `tip` `important` `warning` `caution`
+支持以下类型的提示框：`note` `tip` `important` `warning` `caution`
 
 :::note
-Highlights information that users should take into account, even when skimming.
+即使在快速浏览时，也值得关注的信息。
 :::
 
 :::tip
-Optional information to help a user be more successful.
+帮助用户更好完成操作的可选信息。
 :::
 
 :::important
-Crucial information necessary for users to succeed.
+用户成功完成操作所必需的关键信息。
 :::
 
 :::warning
-Critical content demanding immediate user attention due to potential risks.
+由于潜在风险，需要用户立即关注的关键内容。
 :::
 
 :::caution
-Negative potential consequences of an action.
+某个操作可能带来的负面后果。
 :::
 
-- **Basic Syntax**
+- **基本语法**
 
     ```markdown
     :::note
-    Highlights information that users should take into account, even when skimming.
+    即使在快速浏览时，也值得关注的信息。
     :::
 
     :::tip
-    Optional information to help a user be more successful.
+    帮助用户更好完成操作的可选信息。
     :::
     ```
 
-- **Custom Titles**
+- **自定义标题**
 
-    The title of the admonition can be customized.
-    :::note[MY CUSTOM TITLE]
-    This is a note with a custom title.
+    提示框的标题可以自定义。
+    :::note[自定义标题]
+    这是一个带有自定义标题的提示框。
     :::
     ```markdown
-    :::note[MY CUSTOM TITLE]
-    This is a note with a custom title.
+    :::note[自定义标题]
+    这是一个带有自定义标题的提示框。
     :::
     ```
 
-- **GitHub Syntax**
+- **GitHub 语法**
 
     > [!TIP]
-    > [The GitHub syntax](https://github.com/orgs/community/discussions/16925) is also supported.
+    > 也支持 [GitHub 语法](https://github.com/orgs/community/discussions/16925)。
     ```markdown
     > [!TIP]
-    > The GitHub syntax is also supported.
+    > 也支持 GitHub 语法。
     ```
 
-- **Spoiler**
+- **剧透文本**
 
-    You can add spoilers to your text. The text also supports **Markdown** syntax.
+    你可以在文本中添加剧透内容。剧透文本也支持 **Markdown** 语法。
 
-    The content :spoiler[is hidden **ayyy**]!
+    内容 :spoiler[被隐藏了 **嘿嘿**]！
     ```markdown
-    The content :spoiler[is hidden **ayyy**]!
+    内容 :spoiler[被隐藏了 **嘿嘿**]！
     ```
 
 ---
 
-For more details, check the [Documentation](https://docs.twilight.spr-aachen.com).
+更多详情请查阅[文档](https://docs.twilight.spr-aachen.com)。

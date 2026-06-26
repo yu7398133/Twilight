@@ -1,25 +1,25 @@
 ---
-title: Encryption Example
+title: 加密示例
 published: 2020-02-02
-description: 'Password: 123456'
+description: '密码：123456'
 encrypted: true
 pinned: false
 password: "123456"
 tags: [Encryption]
-category: Examples
+category: 示例
 ---
 
 
-# Password Protected Post
+# 密码保护文章
 
-This is an example of a password-protected post in the Twilight theme. The content below is encrypted using AES and can only be viewed by entering the correct password.
+这是 Twilight 主题中密码保护文章的示例。以下内容使用 AES 加密，只有输入正确密码才能查看。
 
 
-## Frontmatter Example
+## Frontmatter 示例
 
 ```yaml
 ---
-title: Encryption Example
+title: 加密示例
 published: 2020-02-02
 encrypted: true
 password: "your-password"
@@ -27,12 +27,12 @@ password: "your-password"
 ---
 ```
 
-- `encrypted` - Whether encryption is enabled for the post.
-- `password` - The password required to unlock the content.
+- `encrypted` - 是否启用文章加密。
+- `password` - 解锁内容所需的密码。
 
 
-## Note
+## 注意事项
 
 :::warning
-Do not use this for extremely sensitive information like bank passwords or private keys. The encryption happens on the client side, and the password itself is stored in the post's metadata (though usually not displayed directly).
+请勿将此功能用于银行密码或私钥等极其敏感的信息。加密在客户端进行，密码本身存储在文章的元数据中（虽然通常不会直接显示）。
 :::

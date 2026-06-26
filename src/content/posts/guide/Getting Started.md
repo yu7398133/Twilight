@@ -1,58 +1,58 @@
 ---
-title: Guide for Template - Getting Started
+title: 模板指南 - 快速开始
 published: 2001-10-02
-description: "How to use this blog template."
+description: "如何使用此博客模板。"
 cover: "./Cover - Getting Started.jpg"
 coverInContent: false
 pinned: true
 tags: []
 category:
-    - Guides:
-        - Getting Started
+    - 指南:
+        - 快速开始
 draft: false
 ---
 
 
-Tip: For the things that are not mentioned in this guide, you may find the answers in the [Astro Docs](https://docs.astro.build/).
+提示：对于本指南中未涉及的内容，你可以在 [Astro 文档](https://docs.astro.build/) 中找到答案。
 
 
-## Front-matter of Posts
+## 文章的 Front-matter
 
 ```yaml
 ---
-title: My First Blog Post
+title: 我的第一篇博客文章
 published: 2020-02-02
-description: This is the first post of my new Astro blog.
+description: 这是我的 Astro 博客的第一篇文章。
 cover: ./cover.jpg
 coverInContent: false
 tags: []
-category: Chore
+category: 日常
 comment: true
 draft: false
 ---
 ```
 
 
-| Attribute        | Description      |
+| 属性             | 说明             |
 |------------------|------------------|
-| `title`          | The title of the post. |
-| `published`      | The date the post was published. |
-| `pinned`         | Whether this post is pinned to the top of the post list. |
-| `description`    | A short description of the post. Displayed on index page. |
-| `cover`          | The cover image path of the post. <br/>1. Start with `http://` or `https://`: For web image <br/>2. Start with `/`: For image in `public` dir <br/>3. With none of the prefixes: Relative to the markdown file |
-| `coverInContent` | Whether to show the cover image in the post content. |
-| `tags`           | The tags of the post. |
-| `category`       | The category of the post <br/>1. Single category: `category: Guides` <br/>2. Multi-category: `category: [Guides, Getting Started]` |
-| `licenseName`    | The license name for the post content. |
-| `author`         | The author of the post. |
-| `sourceLink`     | The source link or reference for the post content. |
-| `comment`        | Whether to enable comment for this post. Default is `true`. |
-| `draft`          | If this post is still a draft, which won't be displayed. |
+| `title`          | 文章的标题。 |
+| `published`      | 文章的发布日期。 |
+| `pinned`         | 是否将此文章置顶在文章列表顶部。 |
+| `description`    | 文章的简短描述，显示在首页。 |
+| `cover`          | 文章的封面图片路径。<br/>1. 以 `http://` 或 `https://` 开头：使用网络图片 <br/>2. 以 `/` 开头：使用 `public` 目录中的图片 <br/>3. 无前缀：相对于 Markdown 文件的路径 |
+| `coverInContent` | 是否在文章内容中显示封面图片。 |
+| `tags`           | 文章的标签。 |
+| `category`       | 文章的分类。<br/>1. 单个分类：`category: 指南` <br/>2. 多个分类：`category: [指南, 快速开始]` |
+| `licenseName`    | 文章内容的许可证名称。 |
+| `author`         | 文章的作者。 |
+| `sourceLink`     | 文章内容的来源链接或参考。 |
+| `comment`        | 是否启用评论功能，默认为 `true`。 |
+| `draft`          | 如果文章仍为草稿状态，则不会被显示。 |
 
 
-## Where to Place the Post Files
+## 文章文件的存放位置
 
-Your post files should be placed in `src/content/posts/` directory. You can also create sub-directories to better organize your posts and assets.
+文章文件应放置在 `src/content/posts/` 目录下。你也可以创建子目录来更好地组织文章和资源文件。
 
 ```
 src/content/posts/
