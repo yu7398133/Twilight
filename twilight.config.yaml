@@ -342,7 +342,7 @@ post:
     # 评论配置
     comment:
         # 启用评论功能
-        enable: false
+        enable: true
         # Twikoo 评论系统配置
         twikoo:
             # 环境 ID
@@ -439,7 +439,7 @@ musicPlayer:
 # 看板娘配置
 pio:
     # 启用看板娘
-    enable: true
+    enable: false
     # 模型文件路径
     models:
         - "https://cdn.jsdelivr.net/gh/Eikanya/Live2d-model/%E9%AD%82%E5%99%A8%E5%AD%A6%E9%99%A2%20(%E7%82%BC%E9%93%9C%E5%AD%A6%E9%99%A2)/live2d/11190/.model.json"
