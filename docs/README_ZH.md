@@ -12,14 +12,14 @@
 
 <table style="width: 100%; table-layout: fixed;">
    <tr>
-      <td colspan="5"><img alt="Desktop" src="image/Desktop.jpg" style="max-width: 100%;"></td>
+      <td colspan="5"><img alt="Desktop" src="https://docs.twilight.spr-aachen.com/preview/desktop.jpg" style="max-width: 100%;"></td>
    </tr>
    <tr>
-      <td><img alt="Mobile_4" src="image/Mobile_4.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_2" src="image/Mobile_2.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_1" src="image/Mobile_1.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_3" src="image/Mobile_3.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_5" src="image/Mobile_5.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_4" src="https://docs.twilight.spr-aachen.com/preview/mobile_4.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_2" src="https://docs.twilight.spr-aachen.com/preview/mobile_2.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_1" src="https://docs.twilight.spr-aachen.com/preview/mobile_1.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_3" src="https://docs.twilight.spr-aachen.com/preview/mobile_3.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_5" src="https://docs.twilight.spr-aachen.com/preview/mobile_5.jpg" style="max-width: 100%;"></td>
    </tr>
 </table>
 
@@ -64,7 +64,7 @@
 - **加载遮罩**: 可配置的启动加载页与动画
 - **侧栏系统**: 可配置的资料、公告、目录、分类、标签、统计等侧栏挂件
 - **站点统计**: 集成 Umami 访客统计
-- **评论系统**: 基于 Twikoo 的评论功能
+- **评论系统**: 集成 Waline、Twikoo 评论服务
 - **音乐播放器**: 支持 Meting API 或本地歌单
 - **看板娘控件**: 可交互的 Live2D 角色
 
@@ -84,14 +84,14 @@
 
 ## 💻 调试
 
-1. **克隆仓库**
-   ```bash
-   git clone https://github.com/Spr-Aachen/Twilight.git
-   # 切换到项目目录
-   cd Twilight
-   ```
+### 0. Fork 仓库
+   点击右上角的 `Fork` 按钮，将仓库 Fork 到自己的 GitHub 账户下
 
-2. **安装依赖**
+### 1. 克隆仓库
+   点击 `Code` -> `Open with GitHub Desktop`，或者执行 `git clone <仓库地址>` (需要安装 Git)
+
+### 2. 安装依赖
+   在项目目录下执行以下命令：
    ```bash
    # 安装 pnpm 如果未安装
    npm install -g pnpm
@@ -99,11 +99,12 @@
    pnpm install
    ```
 
-3. **配置博客**
+### 3. 配置博客
    - 在 `twilight.config.yaml` 中 [自定义博客设置](https://docs.twilight.spr-aachen.com/config/core)
    - 在 `src/content` 中 [管理站点内容](https://docs.twilight.spr-aachen.com/config/content)
 
-4. **本地调试**
+### 4. 本地调试
+   在项目目录下执行以下命令：
    ```bash
    pnpm dev
    ```

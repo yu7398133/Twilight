@@ -27,3 +27,4 @@ Twilight 是一个基于 [Astro](https://astro.build) 框架构建的 CMS 集成
 - 在 [#114](https://github.com/Spr-Aachen/Twilight/pull/114) 中实现了非破坏性 PagesCMS 支持
 - 在 [#117](https://github.com/Spr-Aachen/Twilight/pull/117) 中实现了目录树视图组件
 - 在 [#141](https://github.com/Spr-Aachen/Twilight/pull/141) 中增强了文章卡片封面处理
+- 在 [#160](https://github.com/Spr-Aachen/Twilight/pull/160) 中实现了可配置的文章复制保护支持

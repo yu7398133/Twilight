@@ -12,14 +12,14 @@ A CMS integrated static blog template built with Astro framework.
 
 <table style="width: 100%; table-layout: fixed;">
    <tr>
-      <td colspan="5"><img alt="Desktop" src="docs/image/Desktop.jpg" style="max-width: 100%;"></td>
+      <td colspan="5"><img alt="Desktop" src="https://docs.twilight.spr-aachen.com/preview/desktop.jpg" style="max-width: 100%;"></td>
    </tr>
    <tr>
-      <td><img alt="Mobile_4" src="docs/image/Mobile_4.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_2" src="docs/image/Mobile_2.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_1" src="docs/image/Mobile_1.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_3" src="docs/image/Mobile_3.jpg" style="max-width: 100%;"></td>
-      <td><img alt="Mobile_5" src="docs/image/Mobile_5.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_4" src="https://docs.twilight.spr-aachen.com/preview/mobile_4.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_2" src="https://docs.twilight.spr-aachen.com/preview/mobile_2.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_1" src="https://docs.twilight.spr-aachen.com/preview/mobile_1.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_3" src="https://docs.twilight.spr-aachen.com/preview/mobile_3.jpg" style="max-width: 100%;"></td>
+      <td><img alt="Mobile_5" src="https://docs.twilight.spr-aachen.com/preview/mobile_5.jpg" style="max-width: 100%;"></td>
    </tr>
 </table>
 
@@ -64,7 +64,7 @@ English | [**中文**](docs/README_ZH.md)
 - **Loading Overlay**: Configurable splash screen with spinner animation
 - **Sidebar Widget System**: Configurable profile, announcement, TOC, categories, tags, directory, statistics etc.
 - **Analytics Support**: Umami analytics integration for visitor insights
-- **Comment System**: Twikoo-powered comment functionality
+- **Comment System**: Waline and Twikoo comment systems integration
 - **Music Player**: Background music with meting API or local playlist support
 - **PIO Widget**: Interactive Live2D character with customizable dialog
 
@@ -84,14 +84,14 @@ English | [**中文**](docs/README_ZH.md)
 
 ## 💻 Configuration
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Spr-Aachen/Twilight.git
-   # Navigate to the project directory
-   cd Twilight
-   ```
+### 0. Fork the repository
+   Click the `Fork` button in the top-right corner to fork the repository to your GitHub account
 
-2. **Install dependencies:**
+### 1. Clone the repository
+   Click `Code` -> `Open with GitHub Desktop`, or run `git clone <repository-url>` (Git required)
+
+### 2. Install dependencies
+   Run the following commands in the project directory:
    ```bash
    # Install pnpm if not already installed
    npm install -g pnpm
@@ -99,11 +99,12 @@ English | [**中文**](docs/README_ZH.md)
    pnpm install
    ```
 
-3. **Configure your blog:**
+### 3. Configure your blog
    - [Customize blog settings](https://docs.twilight.spr-aachen.com/en/config/core) inside `twilight.config.yaml`
    - [Manage site content](https://docs.twilight.spr-aachen.com/en/config/content) inside `src/content`
 
-4. **Start the development server:**
+### 4. Start the development server:
+   Run the following command in the project directory:
    ```bash
    pnpm dev
    ```
