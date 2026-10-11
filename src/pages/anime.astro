@@ -17,7 +17,42 @@ const pageDescription = LinkPresets[LinkPreset.Anime].description;
 
 // Bangumi API配置
 const BANGUMI_USER_ID = siteConfig.bangumi?.userId || "";
-const BANGUMI_API_BASE = "https://api.bgm.tv";
+// API 与图片地址均可通过 twilight.config.yaml 覆盖为第三方代理，
+// 因为 api.bgm.tv / lain.bgm.tv 在国内网络下通常无法直连。
+const BANGUMI_API_BASE = (
+    siteConfig.bangumi?.apiBase || "https://api.bgm.tv"
+).replace(/\/+$/, "");
+const BANGUMI_IMAGE_BASE = (
+    siteConfig.bangumi?.imageBase || ""
+).replace(/\/+$/, "");
+
+// 原始图片域名（直连不可用时会被替换为上面的代理域名）
+const BANGUMI_ORIGINAL_IMAGE_HOSTS = [
+    "lain.bgm.tv",
+    "bgm.tv",
+    "api.bgm.tv",
+];
+
+// 把 Bangumi 原始图片地址重写到代理域名，避免图片加载失败
+function resolveCoverUrl(rawUrl: string | undefined): string {
+    const fallback = "/assets/anime/default.webp";
+    if (!rawUrl) return fallback;
+    if (!BANGUMI_IMAGE_BASE) return rawUrl;
+
+    try {
+        const parsed = new URL(rawUrl);
+        if (BANGUMI_ORIGINAL_IMAGE_HOSTS.includes(parsed.hostname)) {
+            const imageBase = new URL(BANGUMI_IMAGE_BASE);
+            parsed.protocol = imageBase.protocol;
+            parsed.host = imageBase.host;
+            return parsed.toString();
+        }
+        return rawUrl;
+    } catch {
+        // 相对路径或非法 URL：交出原值
+        return rawUrl;
+    }
+}
 
 // 检查是否配置了有效的 Bangumi 用户 ID
 const isBangumiConfigured = 
@@ -118,7 +153,11 @@ async function processBangumiData(data: any, status: string) {
                 title: item.subject?.name_cn || item.subject?.name || "Unknown Title",
                 status: status,
                 rating: rating,
-                cover: item.subject?.images?.medium || "/assets/anime/default.webp",
+                cover: resolveCoverUrl(
+                    item.subject?.images?.medium ||
+                        item.subject?.images?.large ||
+                        item.subject?.images?.common,
+                ),
                 description: (
                     item.subject?.short_summary ||
                     item.subject?.name_cn ||

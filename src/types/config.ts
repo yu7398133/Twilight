@@ -193,6 +193,10 @@ export type SiteConfig = {
     bangumi?: {
         // 用户 ID
         userId?: string;
+        // Bangumi API 地址（api.bgm.tv 在国内常无法直连，可填第三方代理）
+        apiBase?: string;
+        // Bangumi 图片地址（lain.bgm.tv 在国内常无法直连，可填第三方代理）
+        imageBase?: string;
     };
     // OpenGraph 配置
     generateOgImages: boolean;

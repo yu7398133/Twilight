@@ -146,6 +146,10 @@ site:
     bangumi:
         # 用户 ID
         userId: "529265"
+        # Bangumi API 地址（api.bgm.tv 在国内常无法直连，可填第三方代理）
+        apiBase: "https://bgmapi.anibt.net"
+        # Bangumi 图片地址（lain.bgm.tv 在国内常无法直连，可填第三方代理）
+        imageBase: "https://bgmimg.anibt.net"
     # OpenGraph 配置
     generateOgImages: true
 
