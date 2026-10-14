@@ -38,18 +38,18 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 
 // Choose adapter depending on deployment environment
-const adapter = process.env.GITHUB_ACTIONS
-    ? undefined
-    : (process.env.CF_PAGES
-        ? cloudflarePages()
-        : (process.env.NETLIFY
-            ? netlify()
-            : (process.env.EDGEONE
-                ? edgeone()
-                : vercel({ mode: "serverless" })
-            )
-        )
-    );
+// 注：本仓库实际通过 Cloudflare Pages 部署（非 GitHub Pages），
+// 故在 GitHub Actions 中也使用 cloudflarePages() 适配器，避免构建报
+// [NoAdapterInstalled]；CF 平台会自动注入 CF_PAGES 环境变量。
+const adapter = process.env.CF_PAGES
+    ? cloudflarePages()
+    : process.env.NETLIFY
+        ? netlify()
+        : process.env.EDGEONE
+            ? edgeone()
+            : (process.env.GITHUB_ACTIONS || process.env.VERCEL)
+                ? cloudflarePages()
+                : vercel({ mode: "serverless" });
 
 // Ref: https://astro.build/config
 export default defineConfig({
